@@ -25,12 +25,13 @@ public class CaesarCipher {
         shift = shift >= alphabet.length() / SHIFT_MULTIPLIER ? shift % (alphabet.length() / SHIFT_MULTIPLIER) : shift;
 
         for (int i = 0; i < encryptedText.length(); i++) {
-            if (!Character.isLetter(encryptedText.charAt(i))) {
-                decryptedText.append(encryptedText.charAt(i));
+            char characterFromEncryptedText = encryptedText.charAt(i);
+            if (!Character.isLetter(characterFromEncryptedText)) {
+                decryptedText.append(characterFromEncryptedText);
                 continue;
             }
 
-            int letterIndexInAlphabet = alphabet.indexOf(encryptedText.charAt(i));
+            int letterIndexInAlphabet = alphabet.indexOf(characterFromEncryptedText);
 
             if (letterIndexInAlphabet + SHIFT_MULTIPLIER * shift >= alphabet.length()) {
                 decryptedText.append(alphabet.charAt(SHIFT_MULTIPLIER * shift - (alphabet.length() - letterIndexInAlphabet)));
